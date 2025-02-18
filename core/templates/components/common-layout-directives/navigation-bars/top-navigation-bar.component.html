@@ -197,15 +197,21 @@
             </li>
             <li class="nav-item">
               <a class="dropdown-item nav-link oppia-navbar-tab-content about-link oppia-impact-report-btn e2e-test-navbar-impact-report-button"
-                 [href]="IMPACT_REPORT_LINK"
-                 target="_blank"
-                 (blur)="aboutDropdown.close()"
-                 rel="noopener">
+                 role="button"
+                 data-bs-toggle="dropdown"
+                 aria-expanded="false">
                 <span class="link">
                   {{'I18N_TOPNAV_IMPACT_REPORT' | translate}}
                 </span>
-                <i class="fas fa-external-link-alt launch-icon"></i>
+                <i class="fas fa-chevron-down dropdown-icon"></i>
               </a>
+              <ul class="dropdown-menu">
+                <li *ngFor="let report of IMPACT_REPORTS">
+                  <a class="dropdown-item" [href]="report.link" taget="_blank" rel="noopener">
+                    {{report.year}}
+                  </a>
+                </li>
+              </ul>
             </li>
           </ul>
         </li>
